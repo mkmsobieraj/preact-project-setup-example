@@ -11,7 +11,7 @@ const config: Configuration = {
   output: {
     path: distDir,
     filename: '[name].js',
-    assetModuleFilename: '[path][name][ext]'
+    assetModuleFilename: '[path][name][ext]',
   },
   module: {
     rules: [
@@ -30,9 +30,10 @@ const config: Configuration = {
         test: /\.css$/,
         use: [
           'style-loader',
+          'css-modules-typescript-loader',
           {
             loader: 'css-loader',
-            options: { modules: true, importLoaders: 1 },
+            options: { modules: true, import: true, importLoaders: 1 },
           },
         ],
       },

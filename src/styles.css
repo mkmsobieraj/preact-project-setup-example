@@ -105,9 +105,9 @@
 }
 
 :root {
-  --blue: rgb(60, 90, 140);
-  --green: rgb(60, 140, 90);
-  --red: rgb(140, 90, 60);
+  --blue: rgb(90, 90, 140);
+  --green: rgb(90, 140, 90);
+  --red: rgb(140, 90, 90);
   --black: rgb(0, 0, 0);
   --white: rgb(255, 255, 255);
   --light-gray: rgb(204, 204, 204);
@@ -135,4 +135,57 @@ em {
 
 strong {
   font-weight: bold;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  background-color: blueviolet;
+}
+
+.footer {
+
+}
+
+.navBar {
+
+}
+
+.toDoCart {
+
+}
+
+.toDoCardTitle {
+
+}
+
+.toDoCardContent {
+  
+}
+
+/* Mobile */
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: var(--red);
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  body {
+    background-color: var(--green);
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 961px) {
+  body {
+    background-color: var(--blue);
+  }
 }
