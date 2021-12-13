@@ -105,6 +105,7 @@
 }
 
 :root {
+  /* colors */
   --blue: rgb(90, 90, 140);
   --green: rgb(90, 140, 90);
   --red: rgb(140, 90, 90);
@@ -113,6 +114,15 @@
   --light-gray: rgb(204, 204, 204);
   --gray: rgb(102, 102, 102);
   --dark-gray: rgb(68, 68, 68);
+
+  /* sizes */
+  --header-height: 70px;
+  --max-content-width: 1080px;
+  --xm-gap: 4px;
+  --sm-gap: 8px;
+  --md-gap: 16px;
+  --lg-gap: 32px;
+  --xl-gap: 64px;
 }
 
 * {
@@ -122,11 +132,12 @@
 }
 
 body {
+  min-width: 200px;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 14px;
-  line-height: 1.8em;
-  color: var(--dark-gray);
+  line-height: 2.5em;
+  background: linear-gradient(90deg, var(--blue) 25%, var(--red) 50%);
 }
 
 em {
@@ -137,55 +148,115 @@ strong {
   font-weight: bold;
 }
 
-.page {
+.mainContent {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin-top: var(--header-height);
+  height: auto;
+  background-color: var(--white);
 }
 
 .header {
+  top: 0px;
   position: fixed;
   width: 100%;
-  height: 70px;
-  background-color: blueviolet;
+  height: var(--header-height);
+  background-color: var(--light-gray);
 }
 
 .footer {
-
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--light-gray);
 }
 
 .navBar {
-
+  display: flex;
 }
 
 .toDoCart {
+  /* position */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: var(--lg-gap);
+  margin-left: auto;
+  margin-right: auto;
 
+  /* style */
+  background-color: #fefdf8;
+  border: 4px solid var(--blue);
+  height: calc(100% - 40px);
+  width: 100%;
+}
+
+.toDoCart:last-child {
+  margin-bottom: var(--lg-gap);
+}
+
+.toDoCardTitleContainer {
+  width: 100%;
+  background-color: var(--blue);
+  padding-bottom: var(--md-gap);
 }
 
 .toDoCardTitle {
-
+  text-align: center;
 }
 
-.toDoCardContent {
-  
+.toDoCardParagraphContainer {
+  margin-top: var(--md-gap);
+  margin-bottom: var(--md-gap);
+  width: 95%;
+  background-image: repeating-linear-gradient(
+    var(--white),
+    var(--white) 34px,
+    var(--blue) 35px
+  );
+}
+
+.toDoCardParagraph {
+  display: inline;
 }
 
 /* Mobile */
 @media only screen and (max-width: 400px) {
-  body {
-    background-color: var(--red);
-  }
 }
 
 /* Tablet */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-  body {
-    background-color: var(--green);
-  }
 }
 
 /* Desktop */
 @media only screen and (min-width: 961px) {
-  body {
-    background-color: var(--blue);
+  .mainContent {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-content-width);
+    width: 70%;
+  }
+
+  .header {
+    max-width: var(--max-content-width);
+    width: 70%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  .footer {
+    max-width: var(--max-content-width);
+    width: 70%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  .toDoCart {
+    width: 90%;
   }
 }
