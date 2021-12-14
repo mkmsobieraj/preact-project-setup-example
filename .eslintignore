@@ -1,3 +1,5 @@
 dist/
+coverage/
 .vscode/
 *.d.ts
+jest.config.ts

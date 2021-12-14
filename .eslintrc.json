@@ -42,11 +42,19 @@
   },
   "overrides": [
       {
-      "files": ["test/**/*.{ts,tsx}"],
+      "files": ["./__test__/**/*.spec.{ts,tsx}"],
       "env": {
         "jest": true
       },
-      "plugins": ["jest"],
+      "extends": [
+          "plugin:testing-library/react",
+          "plugin:jest-dom/recommended"
+      ],
+      "plugins": [
+          "jest",
+          "jest-dom",
+          "testing-library"
+        ],
       "rules": {
           "jest/no-disabled-tests": "error",
           "jest/no-focused-tests": "error",
