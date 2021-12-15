@@ -104,6 +104,23 @@
   font-style: italic;
 }
 
+/* Fuzzy Bubbles Family */
+@font-face {
+  font-family: 'Fuzzy Bubbles';
+  src: url('../static/fonts/fuzzy-bubbles/fuzzy-bubbles-v3-latin-regular.woff')
+    format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Fuzzy Bubbles';
+  src: url('../static/fonts/fuzzy-bubbles/fuzzy-bubbles-v3-latin-700.woff')
+    format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
 :root {
   /* colors */
   --blue: rgb(90, 90, 140);
@@ -117,12 +134,12 @@
 
   /* sizes */
   --header-height: 70px;
-  --max-content-width: 1080px;
+  --max-content-width: 960px;
   --xm-gap: 4px;
   --sm-gap: 8px;
   --md-gap: 16px;
   --lg-gap: 32px;
-  --xl-gap: 64px;
+  --xxl-gap: 96px;
 }
 
 * {
@@ -132,12 +149,10 @@
 }
 
 body {
-  min-width: 200px;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 2.5em;
-  background: linear-gradient(90deg, var(--blue) 25%, var(--red) 50%);
 }
 
 em {
@@ -148,14 +163,46 @@ strong {
   font-weight: bold;
 }
 
+.mainContentWrapper {
+  margin-top: calc(var(--header-height) + var(--xxl-gap));
+  margin-bottom: var(--xxl-gap);
+  display: grid;
+}
+
 .mainContent {
-  display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  margin-top: var(--header-height);
+  display: flex;
+}
+
+.page {
   height: auto;
   background-color: var(--white);
+  border: 1px solid #ccc;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.2);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.first {
+  transform: rotateZ(2deg) translateX(20px) translateY(-10px);
+  z-index: -1;
+}
+
+.second {
+  transform: rotateZ(-3deg);
+  z-index: -1;
+}
+
+.third {
+  transform: rotateZ(-5deg) translateX(-10px);
+  z-index: -1;
+}
+
+.fourth {
+  transform: rotateZ(4deg) translateY(20px);
+  z-index: -1;
 }
 
 .header {
@@ -163,14 +210,14 @@ strong {
   position: fixed;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--light-gray);
+  box-shadow: 0 12px 12px -6px var(--light-gray);
 }
 
 .footer {
   position: fixed;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--light-gray);
+  box-shadow: 0 -12px 12px -6px var(--light-gray);
 }
 
 .navBar {
@@ -189,7 +236,8 @@ strong {
 
   /* style */
   background-color: #fefdf8;
-  border: 4px solid var(--blue);
+  border: 1px solid var(--blue);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 1px 1px 3px rgba(0, 0, 0, 0.2);
   height: calc(100% - 40px);
   width: 100%;
 }
@@ -233,7 +281,8 @@ strong {
 
 /* Desktop */
 @media only screen and (min-width: 961px) {
-  .mainContent {
+  .mainContent,
+  .page {
     margin-left: auto;
     margin-right: auto;
     max-width: var(--max-content-width);
