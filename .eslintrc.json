@@ -42,7 +42,7 @@
   },
   "overrides": [
       {
-      "files": ["./__test__/**/*.spec.{ts,tsx}"],
+      "files": ["./__test__/**/*.{ts,tsx}"],
       "env": {
         "jest": true
       },
@@ -62,6 +62,18 @@
           "jest/valid-expect": "error",
           "jest/no-conditional-expect": "error"
       }
+    },
+    {
+        "files": ["./cypress/**/*.{ts,js}"],
+        "env": {
+            "cypress/globals": true
+            },
+        "extends": [
+            "plugin:cypress/recommended"
+          ],
+        "plugins": [
+            "cypress"
+          ]
     }
   ]
 }
