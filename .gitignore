@@ -108,4 +108,6 @@ dist/
 package-lock.json
 .vscode/
 *.d.ts
+!declarations.d.ts
+!spec/*.json
 coverage/

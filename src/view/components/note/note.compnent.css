@@ -1,0 +1,39 @@
+.toDoCart {
+  /* position */
+  display: flex;
+  flex-direction: column;
+  margin: var(--md-gap);
+
+  /* style */
+  max-width: 300px;
+  border: solid var(--blue);
+  border-width: 3px 4px 3px 5px;
+  border-radius: 97% 3% 92% 8% / 8% 94% 6% 92%;
+  transform: rotate(2deg);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1), 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toDoCardTitleContainer {
+  transform: rotate(-2deg);
+  margin: var(--md-gap) var(--md-gap) 0 var(--md-gap);
+}
+
+.toDoCardTitle {
+}
+
+.toDoCardParagraphContainer {
+  transform: rotate(-2deg);
+  margin-top: var(--md-gap);
+  margin-bottom: var(--md-gap);
+  width: 95%;
+}
+
+.toDoCardParagraph {
+  padding-left: var(--md-gap);
+}
+
+.tagSection {
+  font-weight: bold;
+  max-width: 95%;
+  margin-left: var(--md-gap);
+}

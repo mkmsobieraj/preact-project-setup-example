@@ -11,7 +11,7 @@ const config: Configuration = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8080/',
+    publicPath: '/dist',
   },
   module: {
     rules: [
@@ -58,15 +58,9 @@ const config: Configuration = {
     }),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.css'],
   },
   devServer: {
-    devMiddleware: {
-      index: true,
-      mimeTypes: { phtml: 'text/html' },
-      publicPath: 'http://localhost:8080/',
-      // writeToDisk: true,
-    },
     static: {
       directory: distDir,
     },
