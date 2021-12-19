@@ -37,3 +37,9 @@
   max-width: 95%;
   margin-left: var(--md-gap);
 }
+
+.menuWarper {
+  position: absolute;
+  top: var(--md-gap);
+  right: var(--sm-gap);
+}

@@ -38,8 +38,12 @@ const config: Configuration = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(png|jpe?g|gif|eot|ttf|woff|woff2)$/i,
         type: 'asset',
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },

@@ -1,0 +1,8 @@
+.button {
+  /* style */
+  width: 42px;
+  height: 42px;
+  border: none;
+  background-color: var(--light-gray);
+  border-radius: 50px;
+}
