@@ -126,6 +126,7 @@
   --blue: rgb(90, 90, 140);
   --green: rgb(90, 140, 90);
   --red: rgb(140, 90, 90);
+  --yellow: rgb(240, 190, 50);
   --black: rgb(0, 0, 0);
   --white: rgb(255, 255, 255);
   --light-gray: rgb(204, 204, 204);
@@ -184,3 +185,4 @@ h1 {
 .green {
   color: var(--green);
 }
+

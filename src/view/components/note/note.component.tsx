@@ -1,12 +1,12 @@
 import React, { ReactElement, useState } from 'react';
 import { Toggle, useToggle } from '../../hooks/toggle';
-import { Menu } from '../menu/menu.component';
+import { NoteMenu } from '../menu/menu.component';
 import { Tag } from '../tag/tag.component';
 import { Textarea } from '../textarea/textarea.component';
 import styles from './note.compnent.css';
 import { Note } from './model';
 
-export const NoteComponent = ({ note, editable = false, menu = <Menu /> }: NoteProps)
+export const NoteComponent = ({ note, editable = false, menu = <NoteMenu /> }: NoteProps)
   : ReactElement => {
   const [isEditable, toggleEditable] = useToggle(editable);
 

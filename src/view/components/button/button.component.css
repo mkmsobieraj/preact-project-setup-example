@@ -3,7 +3,6 @@
   width: 42px;
   height: 42px;
   border: none;
-  background-color: var(--light-gray);
   border-radius: 50px;
 }
 
@@ -14,4 +13,24 @@
 .button:active {
   background-color: var(--light-gray);
   transform: translateY(4px);
+}
+
+.backgroundLightGrey {
+  background-color: var(--light-gray);
+}
+
+.backgroundBlue {
+  background: var(--blue);
+}
+
+.backgroundRed {
+  background: var(--red);
+}
+
+.backgroundGreen {
+  background: var(--green);
+}
+
+.backgroundYellow {
+  background: var(--yellow);
 }
