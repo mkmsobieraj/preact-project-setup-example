@@ -148,7 +148,9 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+textarea,
+input {
   font-family: 'Fuzzy Bubbles', sans-serif;
   font-weight: 300;
   font-size: 16px;

@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react';
+import { NotesHandler } from '../../hooks/notes';
 import { useToggle } from '../../hooks/toggle';
 import { AddButton } from '../button/button.component';
+import { Note } from '../note/model';
 import styles from './page.component.css';
 
-export const Page = ({ children }: PageProps): ReactElement => {
+export const Page = ({ children, noteHandler }: PageProps): ReactElement => {
   const [isAddButton, toggle] = useToggle(false);
 
   return (
@@ -17,7 +19,9 @@ export const Page = ({ children }: PageProps): ReactElement => {
         <div className={styles.notesSection}>
           {children}
           {isAddButton && (
-            <div className={styles.addButtonWrapper}><AddButton onClick={(): void => { console.log('test'); }} /></div>
+            <div className={styles.addButtonWrapper}>
+              <AddButton onClick={(): void => { noteHandler.actions.add(new Note()); }} />
+            </div>
           )}
         </div>
       </main>
@@ -32,4 +36,5 @@ export const Page = ({ children }: PageProps): ReactElement => {
 
 interface PageProps {
   children: React.ReactNode;
+  noteHandler: NotesHandler;
 }

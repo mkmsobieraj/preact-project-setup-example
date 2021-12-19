@@ -6,3 +6,12 @@
   background-color: var(--light-gray);
   border-radius: 50px;
 }
+
+.button:hover {
+  background-color: var(--gray);
+}
+
+.button:active {
+  background-color: var(--light-gray);
+  transform: translateY(4px);
+}

@@ -8,4 +8,4 @@ export const useToggle = (initialValue: boolean): [boolean, Toggle] => {
   return [value, toggle];
 };
 
-type Toggle = () => void;
+export type Toggle = () => void;

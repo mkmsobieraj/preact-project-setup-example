@@ -1,0 +1,14 @@
+.textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+
+  padding-left: var(--md-gap);
+  background-color: transparent;
+  width: 100%;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}

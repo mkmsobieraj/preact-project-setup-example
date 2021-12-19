@@ -43,3 +43,18 @@
   top: var(--md-gap);
   right: var(--sm-gap);
 }
+
+.titleTextarea {
+  margin-top: var(--md-gap);
+  display: flex;
+  height: 2.5em;
+  transform: rotate(-2deg);
+}
+
+.contentTextarea {
+  height: 15em;
+}
+
+.tagsTextarea {
+  transform: rotate(-2deg);
+}
