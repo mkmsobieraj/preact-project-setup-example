@@ -186,3 +186,46 @@ h1 {
   color: var(--green);
 }
 
+.yellow {
+  color: var(--yellow);
+}
+
+.backgroundLightGrey {
+  background-color: var(--light-gray);
+}
+
+.backgroundBlue {
+  background: var(--blue);
+}
+
+.backgroundRed {
+  background: var(--red);
+}
+
+.backgroundGreen {
+  background: var(--green);
+}
+
+.backgroundYellow {
+  background: var(--yellow);
+}
+
+.borderGrey {
+  border-color: var(--gray);
+}
+
+.borderBlue {
+  border-color: var(--blue);
+}
+
+.borderRed {
+  border-color: var(--red);
+}
+
+.borderGreen {
+  border-color: var(--green);
+}
+
+.borderYellow {
+  border-color: var(--yellow);
+}

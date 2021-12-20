@@ -15,22 +15,3 @@
   transform: translateY(4px);
 }
 
-.backgroundLightGrey {
-  background-color: var(--light-gray);
-}
-
-.backgroundBlue {
-  background: var(--blue);
-}
-
-.backgroundRed {
-  background: var(--red);
-}
-
-.backgroundGreen {
-  background: var(--green);
-}
-
-.backgroundYellow {
-  background: var(--yellow);
-}

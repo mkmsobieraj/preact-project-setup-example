@@ -5,7 +5,7 @@ import { AddButton } from '../button/button.component';
 import { Note } from '../note/model';
 import styles from './page.component.css';
 
-export const Page = ({ children, noteHandler }: PageProps): ReactElement => {
+export const Page = ({ children, notesHandler: noteHandler }: PageProps): ReactElement => {
   const [isAddButton, toggle] = useToggle(false);
 
   return (
@@ -20,7 +20,7 @@ export const Page = ({ children, noteHandler }: PageProps): ReactElement => {
           {children}
           {isAddButton && (
             <div className={styles.addButtonWrapper}>
-              <AddButton onClick={(): void => { noteHandler.actions.add(new Note()); }} />
+              <AddButton onClick={(): void => { noteHandler.actions.add(Note.createEmptyEditableNote()); }} />
             </div>
           )}
         </div>
@@ -36,5 +36,5 @@ export const Page = ({ children, noteHandler }: PageProps): ReactElement => {
 
 interface PageProps {
   children: React.ReactNode;
-  noteHandler: NotesHandler;
+  notesHandler: NotesHandler;
 }

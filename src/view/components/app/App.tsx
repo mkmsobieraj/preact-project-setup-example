@@ -40,8 +40,8 @@ export const App = (): ReactElement => {
   ]);
 
   return (
-    <Page noteHandler={notesHander}>
-      {notesHander.notes.map((note, i) => <NoteComponent note={note} key={i} />)}
+    <Page notesHandler={notesHander}>
+      {notesHander.notes.map((note, i) => <NoteComponent note={note} key={i} notesHandler={notesHander} />)}
     </Page>
   );
 };

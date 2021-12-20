@@ -1,12 +1,15 @@
 import React, { ReactElement, useState } from 'react';
+import { NotesHandler } from '../../hooks/notes';
 import { useToggle } from '../../hooks/toggle';
 import {
   DeleteButton, DiscardButton, DoneButton, EditButton, HighImportanceButton,
-  ImportanceButton, InProgressButton, LowImportanceButton, MenuButton, ModerateImportanceButton, ProgressButton
+  ImportanceButton, InProgressButton, LowImportanceButton, MenuButton,
+  ModerateImportanceButton, ProgressButton, ToDoButton
 } from '../button/button.component';
+import { Importance, Note } from '../note/model';
 import styles from './menu.component.css';
 
-export const NoteMenu = (): ReactElement => {
+export const NoteMenu = ({ note, notesHandler }: NoteMenuProps): ReactElement => {
   const [active, toggle] = useToggle(false);
   const [activeImportanceMenu, setActiveImportanceMenu] = useState(false);
   const [activeProgressMenu, setProgressMenu] = useState(false);
@@ -27,31 +30,40 @@ export const NoteMenu = (): ReactElement => {
     setActiveImportanceMenu(false);
   };
 
-  return (
-    <>
-      <MenuButton onClick={toggleAll} />
+  const deleteNote = (): void => {
+    notesHandler.actions.delete(note.id);
+  };
 
-      <nav>
+  const editNote = (): void => {
+    notesHandler.actions.toggleEditable(note.id);
+  };
+
+  return (
+    <div className={styles.menuWrapper}>
+      <div className={styles.buttonWrapper}>
+        <MenuButton onClick={toggleAll} />
+      </div>
+      <nav className={styles.nav}>
         {active &&
           <menu className={styles.menu}>
-            <li><DeleteButton /></li>
-            <li><EditButton /></li>
+            <li><DeleteButton onClick={deleteNote} /></li>
+            <li><EditButton onClick={editNote} /></li>
             <li><ImportanceButton onClick={toggleImportanceMenu} /></li>
             <li><ProgressButton onClick={toggleProgressMenu} /></li>
           </menu>
         }
-        {activeImportanceMenu && <ImportanceMenu />}
+        {activeImportanceMenu && <ImportanceMenu note={note} notesHandler={notesHandler} />}
         {activeProgressMenu && <ProgressMenu />}
       </nav>
-    </>
+    </div>
   );
 };
 
-const ImportanceMenu = (): ReactElement => (
+const ImportanceMenu = ({ note, notesHandler }: NoteMenuProps): ReactElement => (
   <menu className={`${styles.menu} ${styles.sideMenu}`}>
-    <li><HighImportanceButton /></li>
-    <li><ModerateImportanceButton /></li>
-    <li><LowImportanceButton /></li>
+    <li><HighImportanceButton onClick={(): void => { notesHandler.actions.setImportance(note.id, Importance.HIGHT); }} /></li>
+    <li><ModerateImportanceButton onClick={(): void => { notesHandler.actions.setImportance(note.id, Importance.MODERATE); }} /></li>
+    <li><LowImportanceButton onClick={(): void => { notesHandler.actions.setImportance(note.id, Importance.LOW); }} /></li>
   </menu>
 );
 
@@ -59,6 +71,12 @@ const ProgressMenu = (): ReactElement => (
   <menu className={`${styles.menu} ${styles.sideMenu}`}>
     <li><DoneButton /></li>
     <li><InProgressButton /></li>
+    <li><ToDoButton /></li>
     <li><DiscardButton /></li>
   </menu>
 );
+
+interface NoteMenuProps {
+  note: Note;
+  notesHandler: NotesHandler;
+}

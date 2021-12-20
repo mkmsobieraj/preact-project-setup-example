@@ -5,8 +5,10 @@
   margin: var(--md-gap);
 
   /* style */
-  max-width: 300px;
-  border: solid var(--blue);
+  min-width: 150px;
+  max-width: 80%;
+  min-height: 150px;
+  border: solid;
   border-width: 3px 4px 3px 5px;
   border-radius: 97% 3% 92% 8% / 8% 94% 6% 92%;
   transform: rotate(2deg);
@@ -16,9 +18,6 @@
 .toDoCardTitleContainer {
   transform: rotate(-2deg);
   margin: var(--md-gap) var(--md-gap) 0 var(--md-gap);
-}
-
-.toDoCardTitle {
 }
 
 .toDoCardParagraphContainer {
@@ -57,4 +56,25 @@
 
 .tagsTextarea {
   transform: rotate(-2deg);
+}
+
+/* Mobile */
+@media only screen and (max-width: 400px) {
+}
+
+/* Tablet */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .toDoCart {
+    max-width: 500px;
+  }
+  .tagSection {
+    margin-left: var(--lg-gap);
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 961px) {
+  .toDoCart {
+    max-width: 300px;
+  }
 }

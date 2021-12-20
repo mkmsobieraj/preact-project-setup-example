@@ -15,6 +15,7 @@ import IconArrowUp from 'bootstrap-icons/icons/arrow-up.svg';
 import IconTrash from 'bootstrap-icons/icons/trash.svg';
 import IconDash from 'bootstrap-icons/icons/dash.svg';
 import IconX from 'bootstrap-icons/icons/x.svg';
+import IconClock from 'bootstrap-icons/icons/clock.svg';
 
 export const IList = ({ size }: IconProps): ReactElement => <IconList viewBox={viewBox} width={size} height={size} />;
 export const IPlus = ({ size }: IconProps): ReactElement => <IconPlus viewBox={viewBox} width={size} height={size} />;
@@ -46,7 +47,8 @@ export const IDash =
   ({ size }: IconProps): ReactElement => <IconDash viewBox={viewBox} width={size} height={size} />;
 export const IX =
   ({ size }: IconProps): ReactElement => <IconX viewBox={viewBox} width={size} height={size} />;
-
+export const IClock =
+  ({ size }: IconProps): ReactElement => <IconClock viewBox={viewBox} width={size} height={size} />;
 
 interface IconProps {
   size: IconSize;

@@ -1,9 +1,30 @@
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+}
+
 .menu {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
+  order: 2;
 }
 
 .sideMenu {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   right: 60px;
   top: 2px;
+  order: 1;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-self: end;
+  margin-bottom: var(--sm-gap);
 }

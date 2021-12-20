@@ -1,8 +1,9 @@
 import React, { MouseEventHandler, ReactElement } from 'react';
 import styles from './button.component.css';
+import globalStyles from '../../../styles.css';
 import {
   IArrowDownUp, IArrowLeftRight, ICheck, IChevronDown,
-  IChevronUp, IDash, IList, IPencilSquare, IPlus, IThreeDots, ITrash, IX
+  IChevronUp, IClock, IDash, IList, IPencilSquare, IPlus, IThreeDots, ITrash, IX
 } from '../icon/icon.component';
 
 const Button = ({ onClick, title, icon, color = ButtonColor.LIGHT_GRAY }: GenericButtonProps): ReactElement => (
@@ -11,11 +12,11 @@ const Button = ({ onClick, title, icon, color = ButtonColor.LIGHT_GRAY }: Generi
 );
 
 const buttonColorToClassMapper: { [key in ButtonColor]: string } = {
-  GREEN: styles.backgroundGreen,
-  YELLOW: styles.backgroundYellow,
-  RED: styles.backgroundRed,
-  BLUE: styles.backgroundBlue,
-  LIGHT_GRAY: styles.backgroundLightGrey,
+  GREEN: globalStyles.backgroundGreen,
+  YELLOW: globalStyles.backgroundYellow,
+  RED: globalStyles.backgroundRed,
+  BLUE: globalStyles.backgroundBlue,
+  LIGHT_GRAY: globalStyles.backgroundLightGrey,
 };
 
 interface GenericButtonProps {
@@ -71,7 +72,11 @@ export const InProgressButton = ({ onClick }: ButtonProps): ReactElement => (
 );
 
 export const DiscardButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IX size='24px' />} title='Discard' color={ButtonColor.RED} onClick={onClick} />
+  <Button icon={<IX size='24px' />} title='Discarded' color={ButtonColor.RED} onClick={onClick} />
+);
+
+export const ToDoButton = ({ onClick }: ButtonProps): ReactElement => (
+  <Button icon={<IClock size='24px' />} title='To Do' color={ButtonColor.LIGHT_GRAY} onClick={onClick} />
 );
 
 interface ButtonProps {
