@@ -81,11 +81,11 @@ export const ToDoButton = ({ onClick }: ButtonProps): ReactElement => (
 );
 
 export const SaveButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<ISave size='24px' />} title='To Do' color={ButtonColor.GREEN} onClick={onClick} />
+  <Button icon={<ISave size='24px' />} title='Save' color={ButtonColor.GREEN} onClick={onClick} />
 );
 
 export const CancelButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IX size='24px' />} title='To Do' color={ButtonColor.RED} onClick={onClick} />
+  <Button icon={<IX size='24px' />} title='Cancel' color={ButtonColor.RED} onClick={onClick} />
 );
 
 interface ButtonProps {
