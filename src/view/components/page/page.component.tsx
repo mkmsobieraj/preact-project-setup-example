@@ -11,11 +11,8 @@ export const Page = ({ children, notesHandler: noteHandler }: PageProps): ReactE
   return (
     <div className={styles.mainContentWrapper}
     >
-      <main className={`${styles.page} ${styles.mainContent}`}
-        onMouseEnter={toggle}
-        onMouseLeave={toggle}
-      >
-        <h1 className={styles.title}>ToDos</h1>
+      <main className={`${styles.page} ${styles.mainContent}`} onDoubleClick={toggle} data-test-id='main-page-content'>
+        <h1 className={styles.title} data-test-id='main-title'>ToDos</h1>
         <div className={styles.notesSection}>
           {children}
           {isAddButton && (

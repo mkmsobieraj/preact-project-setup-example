@@ -10,18 +10,25 @@
 
 .menu {
   display: flex;
-  flex-direction: column;
   list-style-type: none;
   order: 2;
 }
 
 .sideMenu {
   display: flex;
-  flex-direction: column;
   right: 60px;
   top: 2px;
   order: 1;
 }
+
+.horizontalMenu {
+  flex-direction: column;
+}
+
+.verticalMenu {
+  flex-direction: row;
+}
+
 
 .buttonWrapper {
   display: flex;

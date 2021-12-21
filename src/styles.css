@@ -211,21 +211,21 @@ h1 {
 }
 
 .borderGrey {
-  border-color: var(--gray);
+  border: solid var(--gray);
 }
 
 .borderBlue {
-  border-color: var(--blue);
+  border: solid var(--blue);
 }
 
 .borderRed {
-  border-color: var(--red);
+  border: solid var(--red);
 }
 
 .borderGreen {
-  border-color: var(--green);
+  border: solid var(--green);
 }
 
 .borderYellow {
-  border-color: var(--yellow);
+  border: solid var(--yellow);
 }

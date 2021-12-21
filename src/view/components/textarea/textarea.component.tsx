@@ -1,19 +1,17 @@
-import React, { ReactElement, useState } from 'react';
+import React, { Dispatch, ReactElement, SetStateAction } from 'react';
 import styles from './textarea.component.css';
 
-export const Textarea = ({ name, placeholder, value, classes }: TextAreaProps): ReactElement => {
-  const [content, setContent] = useState<string | undefined>(value);
-
+export const Textarea = ({ name, placeholder, useState: [state, setState], classes }: TextAreaProps): ReactElement => {
   return <textarea name={name}
     placeholder={placeholder}
-    value={content}
-    onChange={(event): void => setContent(event.target.value)}
+    value={state}
+    onChange={(event): void => setState(event.target.value)}
     className={`${styles.textarea} ${classes?.join(' ')}`}></textarea>;
 };
 
 interface TextAreaProps {
   name: string;
   placeholder: string;
-  value?: string;
+  useState: [string | undefined, Dispatch<SetStateAction<string | undefined>>]
   classes?: string[];
 }

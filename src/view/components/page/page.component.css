@@ -31,6 +31,29 @@
   background-position: center;
 }
 
+.first {
+  transform: rotateZ(2deg) translateX(20px) translateY(-10px);
+  background-image: repeating-linear-gradient(-2deg);
+  z-index: -1;
+}
+
+.second {
+  transform: rotateZ(-3deg);
+  background-image: repeating-linear-gradient(3deg);
+  z-index: -1;
+}
+
+.third {
+  transform: rotateZ(-5deg) translateX(-10px);
+  background-image: repeating-linear-gradient(5deg);
+  z-index: -1;
+}
+
+.fourth {
+  transform: rotateZ(4deg) translateY(20px);
+  z-index: -1;
+}
+
 .addButtonWrapper {
   align-self: end;
   padding-bottom: var(--lg-gap);
@@ -78,21 +101,45 @@
 
   .first {
     transform: rotateZ(2deg) translateX(20px) translateY(-10px);
+    background-image: repeating-linear-gradient(
+      -2deg,
+      var(--white),
+      var(--white) 39px,
+      var(--blue) 40px
+    );
     z-index: -1;
   }
 
   .second {
     transform: rotateZ(-3deg);
+    background-image: repeating-linear-gradient(
+      3deg,
+      var(--white),
+      var(--white) 39px,
+      var(--blue) 40px
+    );
     z-index: -1;
   }
 
   .third {
     transform: rotateZ(-5deg) translateX(-10px);
+    background-image: repeating-linear-gradient(
+      5deg,
+      var(--white),
+      var(--white) 39px,
+      var(--blue) 40px
+    );
     z-index: -1;
   }
 
   .fourth {
     transform: rotateZ(4deg) translateY(20px);
+    background-image: repeating-linear-gradient(
+      -4deg,
+      var(--white),
+      var(--white) 39px,
+      var(--blue) 40px
+    );
     z-index: -1;
   }
 }

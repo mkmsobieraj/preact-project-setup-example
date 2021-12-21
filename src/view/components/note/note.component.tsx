@@ -1,22 +1,22 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { useToggle } from '../../hooks/toggle';
-import { NoteMenu } from '../menu/menu.component';
+import { EditableNoteMenu, Menu, NoteMenu } from '../menu/menu.component';
 import { Tag } from '../tag/tag.component';
 import { Textarea } from '../textarea/textarea.component';
 import styles from './note.compnent.css';
 import globalStyles from '../../../styles.css';
-import { Importance, Note } from './model';
+import { Importance, Note, NoteBuilder } from './model';
 import { NotesHandler } from '../../hooks/notes';
 
 export const NoteComponent = ({
   note,
   notesHandler,
-  menu = <NoteMenu note={note} notesHandler={notesHandler} />
+  Menu = getMenu(note)
 }: NoteProps)
   : ReactElement => {
 
-  return (note.editable ? <EditableNote note={note} notesHandler={notesHandler} /> :
-    <NotEditableNote note={note} menu={menu} notesHandler={notesHandler} />
+  return (note.editable ? <EditableNote note={note} Menu={Menu} notesHandler={notesHandler} /> :
+    <NotEditableNote note={note} Menu={Menu} notesHandler={notesHandler} />
   );
 };
 
@@ -26,13 +26,18 @@ const importanceToColorMap: { [key in Importance]: string } = {
   LOW: globalStyles.borderBlue,
 };
 
+const getMenu = (note: Note): Menu => {
+  return note.editable ? EditableNoteMenu : NoteMenu;
+};
+
 const NotEditableNote = ({
+  note,
   note: {
     title,
     content,
     tags,
     importance,
-  }, menu }: NotEditableNoteProps): ReactElement => {
+  }, notesHandler, Menu }: NotEditableNoteProps): ReactElement => {
   const [isMenu, toggleMenu] = useToggle(false);
 
   return (
@@ -46,31 +51,51 @@ const NotEditableNote = ({
           tags?.map((val: string, i: number) => <Tag text={val} key={i} />)
         }
       </p>
-      <div className={styles.menuWarper}> {isMenu && menu} </div>
+      <div className={styles.menuWarper}> {isMenu && <Menu note={note} notesHandler={notesHandler} />} </div>
     </section>
   );
 };
 
 const EditableNote = ({
-  note: {
-    title,
-    content,
-    tags,
-    importance
-  } }: EditableNoteProps): ReactElement => {
+  note,
+  notesHandler,
+  Menu }: EditableNoteProps): ReactElement => {
+  const [tmpTitle, setTmpTitle] = useState<string | undefined>(note.title);
+  const [tmpContent, setTmpContent] = useState<string | undefined>(note.content);
+  const [tmpTagsStr, setTmpTagsStr] = useState<string | undefined>(note.tags.join(' '));
+  const refTmpNote = useRef(new NoteBuilder().copy(note)
+    .title(tmpTitle)
+    .content(tmpContent)
+    .tags(tmpTagsStr)
+    .build());
+
+  useEffect(() => {
+    refTmpNote.current = new NoteBuilder().copy(refTmpNote.current)
+      .title(tmpTitle)
+      .content(tmpContent)
+      .tags(tmpTagsStr)
+      .build();
+  }, [tmpTitle, tmpContent, tmpTagsStr]);
+
   return (
-    <section className={`${styles.toDoCart} ${importanceToColorMap[importance]}`}>
-      <Textarea name='title' placeholder='Write title here' value={title} classes={[styles.titleTextarea]} />
+    <section className={`${styles.toDoCart} ${importanceToColorMap[note.importance]}`} data-test-id='editable-note'>
+      <Textarea name='title'
+        placeholder='Write title here'
+        useState={[tmpTitle, setTmpTitle]}
+        classes={[styles.titleTextarea]} />
       <div className={styles.toDoCardParagraphContainer}>
         <Textarea name='content'
           placeholder='Write note content here'
-          value={content}
+          useState={[tmpContent, setTmpContent]}
           classes={[styles.contentTextarea]} />
       </div>
       <Textarea name='tags'
         placeholder='Write tags here'
-        value={tags?.join(' ')}
+        useState={[tmpTagsStr, setTmpTagsStr]}
         classes={[styles.tagsTextarea]} />
+      <div className={styles.editableMenuWarper}>
+        <Menu note={refTmpNote.current} notesHandler={notesHandler} />
+      </div>
     </section>
   );
 };
@@ -78,18 +103,19 @@ const EditableNote = ({
 
 interface NoteProps {
   note: Note;
-  menu?: ReactElement;
+  Menu?: Menu;
   editable?: boolean;
   notesHandler: NotesHandler;
 }
 
 interface NotEditableNoteProps {
   note: Note;
-  menu?: ReactElement;
+  Menu: Menu;
   notesHandler: NotesHandler;
 }
 
 interface EditableNoteProps {
   note: Note;
+  Menu: Menu;
   notesHandler: NotesHandler;
 }

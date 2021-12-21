@@ -30,7 +30,12 @@ export class Note implements Comparable<Note> {
 
   public static createEmptyEditableNote(): Note {
     return new Note(
-      undefined, undefined, undefined, undefined, undefined, true
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      true
     );
   }
 
@@ -116,4 +121,32 @@ export enum ProgressStatus {
   DONE = 'DONE',
   DISCARDED = 'DISCARDED',
   TO_DO = 'TO_DO',
+}
+
+export class NoteBuilder {
+  private note: Note = Note.createEmptyEditableNote();
+
+  public copy(note: Note): NoteBuilder {
+    this.note = note.copy();
+    return this;
+  }
+
+  public title(value?: string): NoteBuilder {
+    this.note.title = value;
+    return this;
+  }
+
+  public content(value?: string): NoteBuilder {
+    this.note.content = value;
+    return this;
+  }
+
+  public tags(value?: string): NoteBuilder {
+    this.note.tags = value ? value?.split(' ') : [];
+    return this;
+  }
+
+  public build(): Note {
+    return this.note;
+  }
 }

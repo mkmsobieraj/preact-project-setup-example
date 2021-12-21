@@ -7,8 +7,12 @@ export const useNotes = (initialNotes: Note[]): NotesHandler => {
 
   const find = (id: string): Note | undefined => notes.find(note => note.id === id);
   const replace = (newNote: Note): void => {
+    console.log(newNote);
     const newNotes = [...notes].map(note => note.compare(newNote) ? newNote : note);
     setNotes(newNotes);
+  };
+  const add = (newNote: Note): void => {
+    setNotes([...notes, newNote]);
   };
 
   return {
@@ -16,9 +20,7 @@ export const useNotes = (initialNotes: Note[]): NotesHandler => {
     actions: {
       get: find,
       add: (note: Note): Note => {
-        const updateNotes = [...notes];
-        updateNotes.push(note);
-        setNotes(updateNotes);
+        add(note);
         return note;
       },
       update: (id: string, newNote: Note): Note | undefined => {
@@ -28,7 +30,6 @@ export const useNotes = (initialNotes: Note[]): NotesHandler => {
           replace(newNote);
         }
         return find(id);
-
       },
       delete: (id: string): void => {
         const note = find(id);

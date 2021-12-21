@@ -2,12 +2,12 @@ import React, { MouseEventHandler, ReactElement } from 'react';
 import styles from './button.component.css';
 import globalStyles from '../../../styles.css';
 import {
-  IArrowDownUp, IArrowLeftRight, ICheck, IChevronDown,
-  IChevronUp, IClock, IDash, IList, IPencilSquare, IPlus, IThreeDots, ITrash, IX
+  IArrowDownUp, IArrowLeftRight, ICalendar, ICalendarCheck, ICalendarWeek, ICalendarX, IChevronDown,
+  IChevronUp, IDash, IList, IPencilSquare, IPlus, ISave, ITrash, IX
 } from '../icon/icon.component';
 
-const Button = ({ onClick, title, icon, color = ButtonColor.LIGHT_GRAY }: GenericButtonProps): ReactElement => (
-  <button className={`${styles.button} ${buttonColorToClassMapper[color]}`} onClick={onClick} title={title}>{icon}
+const Button = ({ onClick, title, icon, color = ButtonColor.LIGHT_GRAY, dataTestId }: GenericButtonProps): ReactElement => (
+  <button className={`${styles.button} ${buttonColorToClassMapper[color]}`} onClick={onClick} title={title} data-test-id={dataTestId}>{icon}
   </button>
 );
 
@@ -24,6 +24,7 @@ interface GenericButtonProps {
   title: string;
   icon: ReactElement;
   color?: ButtonColor;
+  dataTestId?: string;
 }
 
 export const MenuButton = ({ onClick }: ButtonProps): ReactElement => (
@@ -31,7 +32,7 @@ export const MenuButton = ({ onClick }: ButtonProps): ReactElement => (
 );
 
 export const AddButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IPlus size='24px' />} title='Add Note' onClick={onClick} />
+  <Button icon={<IPlus size='24px' />} title='Add Note' dataTestId='add-button' onClick={onClick} />
 );
 
 export const EditButton = ({ onClick }: ButtonProps): ReactElement => (
@@ -64,19 +65,27 @@ export const LowImportanceButton = ({ onClick }: ButtonProps): ReactElement => (
 );
 
 export const DoneButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<ICheck size='24px' />} title='Done' color={ButtonColor.GREEN} onClick={onClick} />
+  <Button icon={<ICalendarCheck size='24px' />} title='Done' color={ButtonColor.GREEN} onClick={onClick} />
 );
 
 export const InProgressButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IThreeDots size='24px' />} title='In Progress' color={ButtonColor.YELLOW} onClick={onClick} />
+  <Button icon={<ICalendarWeek size='24px' />} title='In Progress' color={ButtonColor.YELLOW} onClick={onClick} />
 );
 
 export const DiscardButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IX size='24px' />} title='Discarded' color={ButtonColor.RED} onClick={onClick} />
+  <Button icon={<ICalendarX size='24px' />} title='Discarded' color={ButtonColor.RED} onClick={onClick} />
 );
 
 export const ToDoButton = ({ onClick }: ButtonProps): ReactElement => (
-  <Button icon={<IClock size='24px' />} title='To Do' color={ButtonColor.LIGHT_GRAY} onClick={onClick} />
+  <Button icon={<ICalendar size='24px' />} title='To Do' color={ButtonColor.LIGHT_GRAY} onClick={onClick} />
+);
+
+export const SaveButton = ({ onClick }: ButtonProps): ReactElement => (
+  <Button icon={<ISave size='24px' />} title='To Do' color={ButtonColor.GREEN} onClick={onClick} />
+);
+
+export const CancelButton = ({ onClick }: ButtonProps): ReactElement => (
+  <Button icon={<IX size='24px' />} title='To Do' color={ButtonColor.RED} onClick={onClick} />
 );
 
 interface ButtonProps {
