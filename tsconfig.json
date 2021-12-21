@@ -2,6 +2,7 @@
   "compilerOptions": {
     "rootDirs": [
       "./src",
+      "__test__",
     ],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -10,11 +11,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "types": ["node", "jest", "express", "cypress"]
+    "types": ["node", "jest", "express"]
   },
   "include": [
     "src/**/*",
-    "cypress/**/*",
-    "../node_modules/cypress"
   ]
 }
