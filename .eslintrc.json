@@ -42,7 +42,7 @@
   },
   "overrides": [
       {
-      "files": ["./__test__/**/*.{ts,tsx}"],
+      "files": ["./src/__test__/**/*.{ts,tsx}"],
       "env": {
         "jest": true
       },

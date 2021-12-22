@@ -4,11 +4,11 @@ import { NoteComponent } from '../note/note.component';
 import { Page } from '../page/page.component';
 
 export const App = (): ReactElement => {
-  const notesHander = useNotes([]);
+  const notesHandler = useNotes([]);
 
   return (
-    <Page notesHandler={notesHander}>
-      {notesHander.notes.map((note, i) => <NoteComponent note={note} key={i} notesHandler={notesHander} />)}
+    <Page notesHandler={notesHandler}>
+      {notesHandler.notes.map((note, i) => <NoteComponent note={note} key={i} notesHandler={notesHandler} />)}
     </Page>
   );
 };

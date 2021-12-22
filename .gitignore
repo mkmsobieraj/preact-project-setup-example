@@ -109,5 +109,7 @@ package-lock.json
 .vscode/
 *.d.ts
 !declarations.d.ts
+!svg.d.ts
 !spec/*.json
 coverage/
+videos/

@@ -1,5 +1,6 @@
 dist/
 coverage/
 .vscode/
+cypress/plugins/
 *.d.ts
 jest.config.ts

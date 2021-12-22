@@ -2,7 +2,6 @@
   "compilerOptions": {
     "rootDirs": [
       "./src",
-      "./__test__",
     ],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -13,6 +12,6 @@
     "jsx": "react",
   },
   "include": [
-    "./src/**/*",
+    "./src/**/*"
   ]
 }
